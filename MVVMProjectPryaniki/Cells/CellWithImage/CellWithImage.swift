@@ -12,12 +12,15 @@ class CellWithImage: UITableViewCell {
     @IBOutlet weak var imager: UIImageView!
     @IBOutlet weak var subtitle: UILabel!
     
-
-    func configure(block: Datum) {
-        title.text = block.name
-        subtitle.text = block.data?.text
-        if let imageData = ImageManager.shared.fetchImage(from: block.data?.url) {
-        imager.image = UIImage(data: imageData)
+    var viewModel: CellWIthImageViewModelProtocol! {
+        didSet {
+            title.text = viewModel.blockName
+            subtitle.text = viewModel.blockText
+            if let imageData = viewModel.imageData {
+                imager.image = UIImage(data: imageData)
+            }
         }
     }
+    
+    
 }

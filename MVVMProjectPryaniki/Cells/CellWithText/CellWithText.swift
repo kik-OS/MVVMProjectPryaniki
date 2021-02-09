@@ -12,8 +12,14 @@ class CellWithText: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var textBlock: UILabel!
     
-    func configure(block: Datum) {
-        title.text = block.name
-        textBlock.text = block.data?.text
+    var viewModel: CellWithTextViewModelProtocol! {
+        didSet {
+            title.text = viewModel.blockName
+            textBlock.text = viewModel.blockText
+            
+        }
+    
+        
     }
+    
 }

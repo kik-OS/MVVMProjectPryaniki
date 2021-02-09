@@ -12,6 +12,12 @@ class SecondViewController: UIViewController {
     var block: Datum!
     var selectedIndex: Int?
     
+    var viewModel: SecondViewModelProtocol! {
+        didSet {
+            self.nameLabel.text = viewModel.blockName
+        }
+    }
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var identificator: UILabel!
@@ -19,12 +25,17 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Временное решение
+        viewModel = SecondViewModel(block: block)
+        //Временное решение
+        
+        
         configure()
     }
     
     
     func configure() {
-        nameLabel.text = block.name
         
         switch block.name {
         case "hz":

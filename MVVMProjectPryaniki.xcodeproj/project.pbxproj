@@ -21,6 +21,11 @@
 		E4DDE0F925CDEDCC00C86A19 /* CellWithSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE0F825CDEDCC00C86A19 /* CellWithSelector.swift */; };
 		E4DDE0FC25D0197800C86A19 /* CellDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDE0FB25D0197800C86A19 /* CellDownloading.swift */; };
 		E4FAAF4925D052B0001AC789 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF4825D052B0001AC789 /* SecondViewController.swift */; };
+		E4FAAF5025D28D0A001AC789 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF4F25D28D0A001AC789 /* SecondViewModel.swift */; };
+		E4FAAF5425D28D19001AC789 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF5325D28D19001AC789 /* FirstViewModel.swift */; };
+		E4FAAF5B25D2BA09001AC789 /* CellWithImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF5A25D2BA09001AC789 /* CellWithImageViewModel.swift */; };
+		E4FAAF6125D2BA59001AC789 /* CellWithSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF6025D2BA59001AC789 /* CellWithSelectorViewModel.swift */; };
+		E4FAAF6525D2BA6F001AC789 /* CellWithTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF6425D2BA6F001AC789 /* CellWithTextViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +45,11 @@
 		E4DDE0F825CDEDCC00C86A19 /* CellWithSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSelector.swift; sourceTree = "<group>"; };
 		E4DDE0FB25D0197800C86A19 /* CellDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDownloading.swift; sourceTree = "<group>"; };
 		E4FAAF4825D052B0001AC789 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E4FAAF4F25D28D0A001AC789 /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
+		E4FAAF5325D28D19001AC789 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewModel.swift; path = MVVMProjectPryaniki/Second/FirstViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E4FAAF5A25D2BA09001AC789 /* CellWithImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithImageViewModel.swift; sourceTree = "<group>"; };
+		E4FAAF6025D2BA59001AC789 /* CellWithSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSelectorViewModel.swift; sourceTree = "<group>"; };
+		E4FAAF6425D2BA6F001AC789 /* CellWithTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithTextViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,18 +82,14 @@
 		E4D8BFA825CD44BC0079699D /* MVVMProjectPryaniki */ = {
 			isa = PBXGroup;
 			children = (
+				E4FAAF4E25D28CBF001AC789 /* Second */,
+				E4FAAF4D25D28C9A001AC789 /* First */,
 				E4D8BFC225CD451B0079699D /* SupportingFiles */,
 				E4D8BFC125CD45100079699D /* Resourses */,
 				E4D8BFC025CD45010079699D /* Storyboard */,
 				E4D8BFBF25CD44F60079699D /* Services */,
 				E4D8BFBE25CD44EF0079699D /* Models */,
-				E4D8BFB725CD44C90079699D /* Info.plist */,
-				E4DDE0B525CD52D800C86A19 /* FirstViewController.swift */,
-				E4FAAF4825D052B0001AC789 /* SecondViewController.swift */,
-				E4DDE0F025CDE7F600C86A19 /* CellWithImage.swift */,
-				E4DDE0F425CDEBDF00C86A19 /* CellWithText.swift */,
-				E4DDE0F825CDEDCC00C86A19 /* CellWithSelector.swift */,
-				E4DDE0FB25D0197800C86A19 /* CellDownloading.swift */,
+				E4FAAF5925D2B9E2001AC789 /* Cells */,
 			);
 			path = MVVMProjectPryaniki;
 			sourceTree = "<group>";
@@ -125,10 +131,67 @@
 		E4D8BFC225CD451B0079699D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E4D8BFB725CD44C90079699D /* Info.plist */,
 				E4D8BFA925CD44BC0079699D /* AppDelegate.swift */,
 				E4D8BFAB25CD44BC0079699D /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E4FAAF4D25D28C9A001AC789 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE0B525CD52D800C86A19 /* FirstViewController.swift */,
+				E4FAAF5325D28D19001AC789 /* FirstViewModel.swift */,
+			);
+			path = First;
+			sourceTree = "<group>";
+		};
+		E4FAAF4E25D28CBF001AC789 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				E4FAAF4825D052B0001AC789 /* SecondViewController.swift */,
+				E4FAAF4F25D28D0A001AC789 /* SecondViewModel.swift */,
+			);
+			path = Second;
+			sourceTree = "<group>";
+		};
+		E4FAAF5925D2B9E2001AC789 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E4FAAF5F25D2BA3D001AC789 /* CellWithSelector */,
+				E4FAAF5D25D2BA13001AC789 /* CellWithImage */,
+				E4FAAF5E25D2BA2E001AC789 /* CellWithText */,
+				E4DDE0FB25D0197800C86A19 /* CellDownloading.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E4FAAF5D25D2BA13001AC789 /* CellWithImage */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE0F025CDE7F600C86A19 /* CellWithImage.swift */,
+				E4FAAF5A25D2BA09001AC789 /* CellWithImageViewModel.swift */,
+			);
+			path = CellWithImage;
+			sourceTree = "<group>";
+		};
+		E4FAAF5E25D2BA2E001AC789 /* CellWithText */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE0F425CDEBDF00C86A19 /* CellWithText.swift */,
+				E4FAAF6425D2BA6F001AC789 /* CellWithTextViewModel.swift */,
+			);
+			path = CellWithText;
+			sourceTree = "<group>";
+		};
+		E4FAAF5F25D2BA3D001AC789 /* CellWithSelector */ = {
+			isa = PBXGroup;
+			children = (
+				E4DDE0F825CDEDCC00C86A19 /* CellWithSelector.swift */,
+				E4FAAF6025D2BA59001AC789 /* CellWithSelectorViewModel.swift */,
+			);
+			path = CellWithSelector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,13 +267,18 @@
 				E4FAAF4925D052B0001AC789 /* SecondViewController.swift in Sources */,
 				E4DDE0F525CDEBDF00C86A19 /* CellWithText.swift in Sources */,
 				E4DDE0B625CD52D800C86A19 /* FirstViewController.swift in Sources */,
+				E4FAAF6525D2BA6F001AC789 /* CellWithTextViewModel.swift in Sources */,
 				E4DDE0EC25CD8D9300C86A19 /* ImageManager.swift in Sources */,
+				E4FAAF6125D2BA59001AC789 /* CellWithSelectorViewModel.swift in Sources */,
+				E4FAAF5025D28D0A001AC789 /* SecondViewModel.swift in Sources */,
+				E4FAAF5425D28D19001AC789 /* FirstViewModel.swift in Sources */,
 				E4D8BFC525CD4DF20079699D /* DataModel.swift in Sources */,
 				E4DDE0FC25D0197800C86A19 /* CellDownloading.swift in Sources */,
 				E4D8BFC825CD4F770079699D /* NetworkManager.swift in Sources */,
 				E4DDE0F125CDE7F600C86A19 /* CellWithImage.swift in Sources */,
 				E4D8BFAA25CD44BC0079699D /* AppDelegate.swift in Sources */,
 				E4D8BFAC25CD44BC0079699D /* SceneDelegate.swift in Sources */,
+				E4FAAF5B25D2BA09001AC789 /* CellWithImageViewModel.swift in Sources */,
 				E4DDE0F925CDEDCC00C86A19 /* CellWithSelector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +428,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58287L88KM;
-				INFOPLIST_FILE = MVVMProjectPryaniki/Info.plist;
+				INFOPLIST_FILE = MVVMProjectPryaniki/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58287L88KM;
-				INFOPLIST_FILE = MVVMProjectPryaniki/Info.plist;
+				INFOPLIST_FILE = MVVMProjectPryaniki/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
