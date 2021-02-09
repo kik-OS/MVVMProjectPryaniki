@@ -42,7 +42,7 @@ class NetworkManager {
 
 
 
-//var dannye: DataModel = DataModel(data: [Datum(name: "hz", data: DataClass(text: "KLKL", url: nil, selectedId: nil, variants: nil)), Datum(name: "selector", data: DataClass(text: "aaaaaaa", url: nil, selectedId: 2, variants: [Variant(id: 1, text: "one"), Variant(id: 2, text: "dva"), Variant(id: 3, text: "tri"), Variant(id: 4, text: "chetyri")])), Datum(name: "picture", data: DataClass(text: "kartinka", url: "https://bipbap.ru/wp-content/uploads/2017/08/0-70.jpg", selectedId: nil, variants: nil))], view: ["hz", "selector", "picture", "hz", "hz", "selector", "picture", "hz"])
+//var dannye: DataModel = DataModel(data: [Datum(name: "hz", data: DataClass(text: "KLKL", url: nil, selectedId: nil, variants: nil)), Datum(name: "selector", data: DataClass(text: "aaaaaaa", url: nil, selectedId: 3, variants: [Variant(id: 1, text: "one"), Variant(id: 2, text: "dva"), Variant(id: 3, text: "tri"), Variant(id: 4, text: "chetyri")])), Datum(name: "picture", data: DataClass(text: "kartinka", url: "https://bipbap.ru/wp-content/uploads/2017/08/0-70.jpg", selectedId: nil, variants: nil))], view: ["hz", "selector", "picture", "hz", "hz", "selector", "picture", "hz"])
 
 
 

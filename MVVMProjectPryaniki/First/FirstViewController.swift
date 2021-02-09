@@ -9,13 +9,9 @@ import UIKit
 
 
 
-protocol FirstViewControllerDelegate {
-    func setValue(index: Int)
-}
+
 
 class FirstViewController: UITableViewController {
-    
-    private var selectedIndex: Int?
     
     private var viewModel: FirstViewModelProtocol! {
         didSet {
@@ -53,7 +49,7 @@ class FirstViewController: UITableViewController {
         case "selector":
             let cell = tableView.dequeueReusableCell(withIdentifier: "selector", for: indexPath) as! CellWithSelector
             cell.viewModel = viewModel.cellWithSelectorViewModel(indexPath: indexPath)
-            cell.delegate = self
+            cell.viewModel.delegate = self
             returnedCell = cell
             
         default:
@@ -65,11 +61,11 @@ class FirstViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let block = viewModel.correctInformation[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let secondViewController = storyboard.instantiateViewController(identifier: "SecondViewController") as? SecondViewController else { return }
-        secondViewController.block = block
-        secondViewController.selectedIndex = selectedIndex 
+        let secondViewModel = viewModel.viewModelForSelectedRow(indexPath: indexPath)
+        secondViewController.viewModel = secondViewModel
+        secondViewController.viewModel.selectedIndexFromSelector = viewModel.selectedIndex
         show(secondViewController, sender: nil)
     }
     
@@ -78,7 +74,7 @@ class FirstViewController: UITableViewController {
 
 extension FirstViewController: FirstViewControllerDelegate {
     func setValue(index: Int) {
-        selectedIndex = index
+        viewModel.selectedIndex = index
     }
 }
 

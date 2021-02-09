@@ -12,18 +12,18 @@ protocol CellWithSelectorViewModelProtocol {
     var blockName: String { get }
     var variants: [Variant]? { get }
     var selectedSegment: Int? { get }
-    var selectedSegmentIndexForSubtitle: Int { get }
-//    var indexForSelector: Int { get }
+    var selectedSegmentIndex: Int { get }
+    var delegate: FirstViewControllerDelegate! { get set }
     init(block: Datum)
 }
 
 class CellWithSelectorViewModel: CellWithSelectorViewModelProtocol {
-//    var indexForSelector: Int {
-//        
-//    }
+    var delegate: FirstViewControllerDelegate!
     
-    var selectedSegmentIndexForSubtitle: Int {
-        (block.data?.selectedId ?? 1) - 1
+
+    
+    var selectedSegmentIndex: Int {
+        (block.data?.selectedId ?? 1)  - 1
     }
     
     var selectedSegment: Int? {

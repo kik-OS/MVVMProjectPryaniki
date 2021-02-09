@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol FirstViewControllerDelegate {
+    func setValue(index: Int)
+}
+
 protocol FirstViewModelProtocol: class {
     
     var dataModel: DataModel? {get}
@@ -17,12 +21,18 @@ protocol FirstViewModelProtocol: class {
     func cellWithTextViewModel(indexPath: IndexPath) -> CellWithTextViewModelProtocol?
     func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol?
     func cellWithSelectorViewModel(indexPath: IndexPath) -> CellWithSelectorViewModelProtocol?
+    func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol?
+    var selectedIndex: Int? { get set }
+    
 }
 
 class FirstViewModel: FirstViewModelProtocol {
+    var selectedIndex: Int?
     
-    
-    
+    func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol? {
+        let block = correctInformation[indexPath.row]
+        return SecondViewModel(block: block)
+    }
     
     func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol? {
         let block = correctInformation[indexPath.row]

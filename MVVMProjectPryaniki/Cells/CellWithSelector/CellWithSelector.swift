@@ -11,16 +11,15 @@ class CellWithSelector: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var selector: UISegmentedControl!
-    var delegate: FirstViewControllerDelegate!
+//    var delegate: FirstViewControllerDelegate!
     
     @IBAction func selectorAction() {
-        delegate.setValue(index: selector.selectedSegmentIndex)
+        viewModel.delegate.setValue(index: selector.selectedSegmentIndex)
     }
     
     var viewModel: CellWithSelectorViewModelProtocol! {
         didSet {
             title.text = viewModel.blockName
-            selector.selectedSegmentIndex = viewModel.selectedSegmentIndexForSubtitle
             
             if let variants = viewModel.variants {
                 selector.removeAllSegments()
@@ -28,6 +27,7 @@ class CellWithSelector: UITableViewCell {
                     selector.insertSegment(withTitle: variant.text, at: Int(variant.id ?? 1) - 1, animated: false)
                 }
             }
+            selector.selectedSegmentIndex = viewModel.selectedSegmentIndex
             
         }
     }
