@@ -7,9 +7,10 @@
 
 import Foundation
 
-protocol FirstViewControllerDelegate {
-    func setValue(index: Int)
+protocol FirstViewModelDelegate {
+    func updateValueFromSelector(newValue: Int)
 }
+
 
 protocol FirstViewModelProtocol: class {
     
@@ -18,38 +19,31 @@ protocol FirstViewModelProtocol: class {
     func numberOfRows() -> Int
     var correctInformation: [Datum] {get set}
     func fetchCorrectInformation()
+    func changeBlock(indexPath: IndexPath) -> Datum
     func cellWithTextViewModel(indexPath: IndexPath) -> CellWithTextViewModelProtocol?
     func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol?
     func cellWithSelectorViewModel(indexPath: IndexPath) -> CellWithSelectorViewModelProtocol?
     func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol?
-    var selectedIndex: Int? { get set }
-    
+    var newIndexFromSelector: Int? {get set}
+
 }
 
 class FirstViewModel: FirstViewModelProtocol {
-    var selectedIndex: Int?
+    var newIndexFromSelector: Int?
     
-    func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol? {
-        let block = correctInformation[indexPath.row]
-        return SecondViewModel(block: block)
+    
+    
+        
+    var dataModel: DataModel?
+    
+    func fetchDataModel(completion: @escaping () -> Void) {
+        NetworkManager.shared.fetchData() { dataModel in
+            self.dataModel = dataModel
+            self.fetchCorrectInformation()
+            completion()
+        }
     }
     
-    func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol? {
-        let block = correctInformation[indexPath.row]
-        return CellWithImageViewModel(block: block)
-    }
-    
-    func cellWithSelectorViewModel(indexPath: IndexPath) -> CellWithSelectorViewModelProtocol? {
-        let block = correctInformation[indexPath.row]
-        return CellWithSelectorViewModel(block: block)
-    }
-    
-    func cellWithTextViewModel(indexPath: IndexPath) -> CellWithTextViewModelProtocol? {
-        let block = correctInformation[indexPath.row]
-        return CellWithTextViewModel(block: block)
-    }
-    
-
     var correctInformation: [Datum] = []
     
     func fetchCorrectInformation() {
@@ -65,20 +59,31 @@ class FirstViewModel: FirstViewModelProtocol {
         }
     }
     
-    
-    var dataModel: DataModel?
-    
-    func fetchDataModel(completion: @escaping () -> Void) {
-        NetworkManager.shared.fetchData() { dataModel in
-            self.dataModel = dataModel
-            self.fetchCorrectInformation()
-            completion()
+    func changeBlock(indexPath: IndexPath) -> Datum {
+        correctInformation[indexPath.row]
+    }
+
+    func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol? {
+        var block = changeBlock(indexPath: indexPath)
+        if  newIndexFromSelector != nil {
+            block.data?.selectedId = newIndexFromSelector
         }
-            
+       return SecondViewModel(block: block)
+    }
+    
+    func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol? {
+        CellWithImageViewModel(block: changeBlock(indexPath: indexPath))
+    }
+    
+    func cellWithSelectorViewModel(indexPath: IndexPath) -> CellWithSelectorViewModelProtocol? {
+        CellWithSelectorViewModel(block: changeBlock(indexPath: indexPath))
+    }
+    
+    func cellWithTextViewModel(indexPath: IndexPath) -> CellWithTextViewModelProtocol? {
+        CellWithTextViewModel(block: changeBlock(indexPath: indexPath))
     }
     
     func numberOfRows() -> Int {
         correctInformation.count
     }
-    
 }

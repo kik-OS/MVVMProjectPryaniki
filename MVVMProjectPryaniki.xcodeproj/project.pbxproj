@@ -26,6 +26,7 @@
 		E4FAAF5B25D2BA09001AC789 /* CellWithImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF5A25D2BA09001AC789 /* CellWithImageViewModel.swift */; };
 		E4FAAF6125D2BA59001AC789 /* CellWithSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF6025D2BA59001AC789 /* CellWithSelectorViewModel.swift */; };
 		E4FAAF6525D2BA6F001AC789 /* CellWithTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF6425D2BA6F001AC789 /* CellWithTextViewModel.swift */; };
+		E4FAAF7425D43275001AC789 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FAAF7325D43275001AC789 /* Box.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E4FAAF5A25D2BA09001AC789 /* CellWithImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithImageViewModel.swift; sourceTree = "<group>"; };
 		E4FAAF6025D2BA59001AC789 /* CellWithSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSelectorViewModel.swift; sourceTree = "<group>"; };
 		E4FAAF6425D2BA6F001AC789 /* CellWithTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithTextViewModel.swift; sourceTree = "<group>"; };
+		E4FAAF7325D43275001AC789 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		E4D8BFA825CD44BC0079699D /* MVVMProjectPryaniki */ = {
 			isa = PBXGroup;
 			children = (
+				E4FAAF7225D43262001AC789 /* Halpers */,
 				E4FAAF4E25D28CBF001AC789 /* Second */,
 				E4FAAF4D25D28C9A001AC789 /* First */,
 				E4D8BFC225CD451B0079699D /* SupportingFiles */,
@@ -194,6 +197,14 @@
 			path = CellWithSelector;
 			sourceTree = "<group>";
 		};
+		E4FAAF7225D43262001AC789 /* Halpers */ = {
+			isa = PBXGroup;
+			children = (
+				E4FAAF7325D43275001AC789 /* Box.swift */,
+			);
+			path = Halpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,6 +288,7 @@
 				E4D8BFC825CD4F770079699D /* NetworkManager.swift in Sources */,
 				E4DDE0F125CDE7F600C86A19 /* CellWithImage.swift in Sources */,
 				E4D8BFAA25CD44BC0079699D /* AppDelegate.swift in Sources */,
+				E4FAAF7425D43275001AC789 /* Box.swift in Sources */,
 				E4D8BFAC25CD44BC0079699D /* SceneDelegate.swift in Sources */,
 				E4FAAF5B25D2BA09001AC789 /* CellWithImageViewModel.swift in Sources */,
 				E4DDE0F925CDEDCC00C86A19 /* CellWithSelector.swift in Sources */,

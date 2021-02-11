@@ -21,7 +21,6 @@ class SecondViewController: UIViewController {
         setupUI()
     }
     
-    
     func setupUI() {
         viewModel.confugure()
         nameLabel.text = viewModel.blockName
@@ -35,6 +34,4 @@ class SecondViewController: UIViewController {
             identificator.alpha = 1
         }
     }
-    
-    
 }

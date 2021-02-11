@@ -9,26 +9,25 @@ import UIKit
 
 class CellWithSelector: UITableViewCell {
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var selector: UISegmentedControl!
-//    var delegate: FirstViewControllerDelegate!
-    
-    @IBAction func selectorAction() {
-        viewModel.delegate.setValue(index: selector.selectedSegmentIndex)
-    }
-    
     var viewModel: CellWithSelectorViewModelProtocol! {
         didSet {
             title.text = viewModel.blockName
-            
             if let variants = viewModel.variants {
                 selector.removeAllSegments()
-                for variant in variants {
-                    selector.insertSegment(withTitle: variant.text, at: Int(variant.id ?? 1) - 1, animated: false)
+                for variant in 0..<variants.count {
+                    selector.insertSegment(withTitle: variants[variant].text, at: variant, animated: false)
                 }
             }
-            selector.selectedSegmentIndex = viewModel.selectedSegmentIndex
+            selector.selectedSegmentIndex = viewModel.calculateIndexFromId()
             
         }
     }
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var selector: UISegmentedControl!
+    
+    @IBAction func selectorAction() {
+        viewModel.delegate?.updateValueFromSelector(newValue: selector.selectedSegmentIndex)
+    }
+    
 }

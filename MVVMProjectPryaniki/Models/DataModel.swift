@@ -16,7 +16,7 @@ struct DataModel: Codable {
 // MARK: - Datum
 struct Datum: Codable {
     let name: String?
-    let data: DataClass?
+    var data: DataClass?
 }
 
 // MARK: - DataClass

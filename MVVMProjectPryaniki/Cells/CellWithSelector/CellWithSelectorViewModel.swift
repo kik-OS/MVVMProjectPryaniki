@@ -12,28 +12,35 @@ protocol CellWithSelectorViewModelProtocol {
     var blockName: String { get }
     var variants: [Variant]? { get }
     var selectedSegment: Int? { get }
-    var selectedSegmentIndex: Int { get }
-    var delegate: FirstViewControllerDelegate! { get set }
     init(block: Datum)
+    func calculateIndexFromId() -> Int
+    var delegate: FirstViewModelDelegate? { get set }
+    
 }
 
 class CellWithSelectorViewModel: CellWithSelectorViewModelProtocol {
-    var delegate: FirstViewControllerDelegate!
+    var delegate: FirstViewModelDelegate?
     
-
+  
     
-    var selectedSegmentIndex: Int {
-        (block.data?.selectedId ?? 1)  - 1
-    }
+  
     
     var selectedSegment: Int? {
         block.data?.selectedId
     }
     
+  
+    
+    
+    func calculateIndexFromId() -> Int {
+        (selectedSegment ?? 1) - 1
+    }
+    
+  
+    
     var variants: [Variant]? {
         block.data?.variants 
     }
-    
     
     var blockName: String {
         block.name ?? ""
@@ -44,6 +51,4 @@ class CellWithSelectorViewModel: CellWithSelectorViewModelProtocol {
     required init(block: Datum) {
         self.block = block
     }
-    
-    
 }
