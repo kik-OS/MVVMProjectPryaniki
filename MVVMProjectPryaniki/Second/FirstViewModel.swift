@@ -3,38 +3,31 @@
 //  MVVMProjectPryaniki
 //
 //  Created by Никита Гвоздиков on 09.02.2021.
-//
+
 
 import Foundation
 
 protocol FirstViewModelDelegate {
-    func updateValueFromSelector(newValue: Int)
+    func updateValueFromSelector(newValue: Int, indexPath: IndexPath)
 }
 
-
 protocol FirstViewModelProtocol: class {
-    
     var dataModel: DataModel? {get}
+    var correctInformation: [Datum] {get set}
     func fetchDataModel(completion: @escaping() -> Void)
     func numberOfRows() -> Int
-    var correctInformation: [Datum] {get set}
     func fetchCorrectInformation()
     func changeBlock(indexPath: IndexPath) -> Datum
     func cellWithTextViewModel(indexPath: IndexPath) -> CellWithTextViewModelProtocol?
     func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol?
     func cellWithSelectorViewModel(indexPath: IndexPath) -> CellWithSelectorViewModelProtocol?
     func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol?
-    var newIndexFromSelector: Int? {get set}
-
+    func updateSelectedIndex(indexPath: IndexPath, newValue: Int?)
 }
 
-class FirstViewModel: FirstViewModelProtocol {
-    var newIndexFromSelector: Int?
-    
-    
-    
-        
+class FirstViewModel: FirstViewModelProtocol, FirstViewModelDelegate {
     var dataModel: DataModel?
+    var correctInformation: [Datum] = []
     
     func fetchDataModel(completion: @escaping () -> Void) {
         NetworkManager.shared.fetchData() { dataModel in
@@ -43,8 +36,6 @@ class FirstViewModel: FirstViewModelProtocol {
             completion()
         }
     }
-    
-    var correctInformation: [Datum] = []
     
     func fetchCorrectInformation() {
         guard let data = dataModel?.data else {return}
@@ -59,16 +50,20 @@ class FirstViewModel: FirstViewModelProtocol {
         }
     }
     
+    func updateValueFromSelector(newValue: Int, indexPath: IndexPath) {
+        updateSelectedIndex(indexPath: indexPath, newValue: newValue + 1)
+    }
+    
+    func updateSelectedIndex(indexPath: IndexPath, newValue: Int?)  {
+        correctInformation[indexPath.row].data?.selectedId = newValue
+    }
+    
     func changeBlock(indexPath: IndexPath) -> Datum {
         correctInformation[indexPath.row]
     }
-
+    
     func viewModelForSelectedRow(indexPath: IndexPath) -> SecondViewModelProtocol? {
-        var block = changeBlock(indexPath: indexPath)
-        if  newIndexFromSelector != nil {
-            block.data?.selectedId = newIndexFromSelector
-        }
-       return SecondViewModel(block: block)
+        return SecondViewModel(block: changeBlock(indexPath: indexPath))
     }
     
     func cellWithImageViewModel(indexPath: IndexPath) -> CellWIthImageViewModelProtocol? {
@@ -76,7 +71,7 @@ class FirstViewModel: FirstViewModelProtocol {
     }
     
     func cellWithSelectorViewModel(indexPath: IndexPath) -> CellWithSelectorViewModelProtocol? {
-        CellWithSelectorViewModel(block: changeBlock(indexPath: indexPath))
+        CellWithSelectorViewModel(block: changeBlock(indexPath: indexPath), indexPath: indexPath)
     }
     
     func cellWithTextViewModel(indexPath: IndexPath) -> CellWithTextViewModelProtocol? {

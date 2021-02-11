@@ -12,13 +12,18 @@ protocol CellWithSelectorViewModelProtocol {
     var blockName: String { get }
     var variants: [Variant]? { get }
     var selectedSegment: Int? { get }
-    init(block: Datum)
+    init(block: Datum, indexPath: IndexPath)
     func calculateIndexFromId() -> Int
     var delegate: FirstViewModelDelegate? { get set }
+    var currentIndexPath: IndexPath {get}
     
 }
 
 class CellWithSelectorViewModel: CellWithSelectorViewModelProtocol {
+   
+    
+    var currentIndexPath: IndexPath
+    
     var delegate: FirstViewModelDelegate?
     
   
@@ -48,7 +53,8 @@ class CellWithSelectorViewModel: CellWithSelectorViewModelProtocol {
     
     private let block: Datum
     
-    required init(block: Datum) {
+    required init(block: Datum, indexPath: IndexPath) {
         self.block = block
+        self.currentIndexPath = indexPath
     }
 }

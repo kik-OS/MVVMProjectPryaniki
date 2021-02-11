@@ -9,6 +9,9 @@ import UIKit
 
 class CellWithSelector: UITableViewCell {
     
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var selector: UISegmentedControl!
+    
     var viewModel: CellWithSelectorViewModelProtocol! {
         didSet {
             title.text = viewModel.blockName
@@ -19,15 +22,10 @@ class CellWithSelector: UITableViewCell {
                 }
             }
             selector.selectedSegmentIndex = viewModel.calculateIndexFromId()
-            
         }
     }
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var selector: UISegmentedControl!
-    
     @IBAction func selectorAction() {
-        viewModel.delegate?.updateValueFromSelector(newValue: selector.selectedSegmentIndex)
+        viewModel.delegate?.updateValueFromSelector(newValue: selector.selectedSegmentIndex, indexPath: viewModel.currentIndexPath)
     }
-    
 }
